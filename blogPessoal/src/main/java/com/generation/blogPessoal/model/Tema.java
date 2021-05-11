@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -24,7 +25,8 @@ public class Tema {
 	private String descricao;
 	
 	@OneToMany(mappedBy ="tema", cascade = CascadeType.ALL)
-	List<Postagem> postagem;
+	@JsonIgnoreProperties("tema")
+	private List<Postagem> postagem;
 	
 	
 	
